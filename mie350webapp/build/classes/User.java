@@ -5,7 +5,8 @@ class User {
 	private String email;
 	private String bio;
 	private String location;
-	private String photoUrl
+	private String photoUrl;
+	private ArrayList<Recipe> savedPost;
 	
 	public User(String username, String password, String name, String email) {
 		this.username = username;
@@ -63,22 +64,45 @@ class User {
 	}
 	
 	public void setName(String name) {
-		name = name;
+		this.name = name;
 	}
 	
 	public void setEmail(String email) {
-		email = email;
+		this.email = email;
 	}
 	
 	public void setBio(String bio){
-		bio = bio;
+		this.bio = bio;
 	}
 	
 	public void setLocation(String location) {
-		location = location;
+		this.location = location;
 	}
 	
 	public void setPhotoUrl(String photoUrl) {
-		photoUrl = photoUrl;
+		this.photoUrl = photoUrl;
 	}
+	
+	//Methods
+	public void addSavedRecipe(Recipe post) {
+		savedPost.add(post);
+	}
+	
+	public void removeSavedRecipe(Recipe post) {
+		savedPost.remove(post);
+	}
+	
+	public boolean updateUserRecords() {
+		String qStr = "UPDATE UserRecords Set Email ='" + email + "', Name ='" + name + "', PhotoUrl = '"
+				+ photoUrl + "', Bio = '" + bio +  "', Location = '" + location +  "', SavedPost = '" + savedPost + "' WHERE Username =" + username + "; ";
+				boolean updateResult = Main.runUpdate(qStr);
+		return updateResult;
+	}
+	
+	public boolean updateUserCredentials() {
+		String qStr = "UPDATE UserCredentials Set Password ='" + password + "' WHERE Username =" + username + "; ";
+				boolean updateResult = Main.runUpdate(qStr);
+		return updateResult;
+	}
+	
 }

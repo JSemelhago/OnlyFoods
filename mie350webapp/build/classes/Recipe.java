@@ -11,4 +11,7 @@ class Recipe {
 	private String cuisineType;
 	private String username;
 	
+	public Recipe() {
+		
+	}
 }
