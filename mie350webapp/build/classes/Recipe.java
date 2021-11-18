@@ -11,7 +11,17 @@ class Recipe {
 	private String cuisineType;
 	private String username;
 	
-	public Recipe() {
-		
+	public Recipe(int postID, String recipeTitle, String imageUrl, int serving, String difficulty, double prepTime, String[] ingredients, String instructions, String dishType, String cuisineType, String username) {
+		this.postID = postID;
+		this.recipeTitle = recipeTitle;
+		this.imageUrl = imageUrl;
+		this.serving = serving;
+		this.difficulty = difficult;
+		//Remind user on front-end to input in minutes
+		this.prepTime = prepTime;
+		this.ingredients = ingredients;
+		this.dishType = dishType;
+		this.cuisineType = cuisineType;
+		this.username = username;
 	}
 }

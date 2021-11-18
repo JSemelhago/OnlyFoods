@@ -95,13 +95,13 @@ class User {
 	public boolean updateUserRecords() {
 		String qStr = "UPDATE UserRecords Set Email ='" + email + "', Name ='" + name + "', PhotoUrl = '"
 				+ photoUrl + "', Bio = '" + bio +  "', Location = '" + location +  "', SavedPost = '" + savedPost + "' WHERE Username =" + username + "; ";
-				boolean updateResult = Main.runUpdate(qStr);
+				boolean updateResult = OnlyFoodsRunner.runUpdate(qStr);
 		return updateResult;
 	}
 	
 	public boolean updateUserCredentials() {
 		String qStr = "UPDATE UserCredentials Set Password ='" + password + "' WHERE Username =" + username + "; ";
-				boolean updateResult = Main.runUpdate(qStr);
+				boolean updateResult = OnlyFoodsRunner.runUpdate(qStr);
 		return updateResult;
 	}
 	
