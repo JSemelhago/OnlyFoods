@@ -22,7 +22,7 @@ class User {
 		this.email = email;
 		this.bio = bio;
 		this.location = location;
-		this.photourl = photourl;
+		this.photoUrl = photoUrl;
 	}
 	
 	//getters
