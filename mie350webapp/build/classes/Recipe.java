@@ -76,7 +76,7 @@ class Recipe {
 	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
 	}
-	pubilc void setPrepTime(double prepTime) {
+	public void setPrepTime(double prepTime) {
 		this.prepTime = prepTime;
 	}
 	public void setIngredients(String ingredients) {
