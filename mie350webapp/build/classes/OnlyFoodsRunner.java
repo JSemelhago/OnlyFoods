@@ -8,6 +8,25 @@ public class OnlyFoodsRunner {
 
 	}
 	
+	//Run select SQL query
+	public static ResultSet runSelect(String qStr) {
+		String queryString = qStr;
+		ResultSet inputList = null;
+		Statement statement;
+		
+		//Nothing to select from
+		if (dbCon == null) {
+			return null;
+		}
+		try {
+			statement = dbCon.createStatement();
+			inputList = statement.executeQuery(queryString);
+		} catch (SQLException se) {
+			SQLExceptionHandler.handleException(se);
+		}
+		return inputList;
+	}
+	
 	//Run update SQL query
 	public static void runUpdate(String qStr) {
 		String queryString = qStr;
