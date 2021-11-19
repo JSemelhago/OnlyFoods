@@ -83,7 +83,15 @@ class User {
 		this.photoUrl = photoUrl;
 	}
 	
+	public void setValid(boolean newValid) {
+		valid = newValid;
+	}
+	
 	//Methods
+	public boolean isValid() {
+		return valid;
+	}
+	
 	public void addSavedRecipe(Recipe post) {
 		savedPost.add(post);
 	}
