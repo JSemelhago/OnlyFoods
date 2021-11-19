@@ -94,4 +94,11 @@ class Recipe {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
+	public boolean updateRecipeDatabase() {
+		String qStr = "UPDATE RecipeDatabase Set RecipeTitle ='" + recipeTitle + "', ImageUrl ='" + imageUrl + "', Serving = '"
+				+ serving + "', Difficulty = '" + difficulty +  "', PrepTime = '" + prepTime +  "', Ingredients = '" + ingredients + "', Instructions = '" + instructions + "', DishType = '" + dishType +"', CuisineType = '" + cuisineType +"', Username = '" + username + "' WHERE PostID =" + postID + "; ";
+				boolean updateResult = OnlyFoodsRunner.runUpdate(qStr);
+		return updateResult;
+	}
 }
