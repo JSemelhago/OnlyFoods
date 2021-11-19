@@ -25,6 +25,7 @@ class Recipe {
 		this.username = username;
 	}
 	
+	//Getters
 	public int getPostID() {
 		return this.postID;
 	}
@@ -57,5 +58,40 @@ class Recipe {
 	}
 	public String getUsername() {
 		return this.username;
+	}
+	
+	//Setters
+	public void setPostID(int postID) {
+		this.postID = postID;
+	}
+	public void setRecipeTitle(String recipeTitle) {
+		this.recipeTitle = recipeTitle;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	public void setServing(int serving) {
+		this.serving = serving;
+	}
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
+	}
+	pubilc void setPrepTime(double prepTime) {
+		this.prepTime = prepTime;
+	}
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
+	}
+	public void setInstructions(String instructions) {
+		this.instructions = instructions;
+	}
+	public void setDishType(String dishType) {
+		this.dishType = dishType;
+	}
+	public void setCuisineType(String cuisineType) {
+		this.cuisineType = cuisineType;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }
