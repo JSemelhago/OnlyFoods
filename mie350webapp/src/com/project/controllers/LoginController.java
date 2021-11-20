@@ -1,3 +1,4 @@
+package com.project.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -38,10 +39,10 @@ public class LoginController extends HttpServlet {
 
 				HttpSession session = request.getSession(true);
 				session.setAttribute("currentSessionUser", user);
-				session.setAttribute("username", member.getUsername());
-				session.setAttribute("name", member.getName());
+				session.setAttribute("username", user.getUsername());
+				session.setAttribute("name", user.getName());
 				/**
-				 * Redirect to the user-only home page.
+				 * Redirect to the members-only home page.
 				 */
 				response.sendRedirect("userLogged.jsp");
 
@@ -69,6 +70,3 @@ public class LoginController extends HttpServlet {
 		}
 	}
 }
-
-
-
