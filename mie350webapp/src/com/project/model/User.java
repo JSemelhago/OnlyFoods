@@ -15,6 +15,7 @@ class User {
 		this.email = email;
 	}
 	
+	
 	public User(String username, String password, String name, String email, String bio, String location, String photoUrl) {
 		this.username = username;
 		this.password = password;
@@ -23,6 +24,13 @@ class User {
 		this.bio = bio;
 		this.location = location;
 		this.photoUrl = photoUrl;
+	}
+	
+	
+	//admin constructor
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
 	}
 	
 	//getters
