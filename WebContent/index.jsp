@@ -4,7 +4,7 @@
 
 <html lang="en">
 <head>
-<title>OnlyFoods</title>
+<title>MIE350 Sample Web App</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -35,7 +35,7 @@
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1>Some Other Text</h1>
+				<h1>Welcome</h1>
 				<p>In this project, your team will design and build a web
 					application. A web application is a software application that is
 					accessed over the Internet using standard browsers (e.g. Internet
