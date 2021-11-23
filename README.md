@@ -36,7 +36,10 @@ Project for MIE350 which incorporates software development methodologies to crea
    3. Set the JRE to jre1.6 and click Finish and tick it
    4. Click OK
 6. Right click on the project->Run As->Run on Server
-7. Open up a browser and type in `localhost:8080/OnlyFoods`
+7. Click on Manually define a new server
+8. Click on Tomcat v7.0 Server and click Next
+9. Click on OnlyFoods and click Add to ensure it is on the right hand side and click Finish
+10. Open up a browser and type in `localhost:8080/OnlyFoods`
 
 **Rerunning After Installation**
 
@@ -44,4 +47,6 @@ Project for MIE350 which incorporates software development methodologies to crea
 2. Ensure that Tomcat is loaded and the JRE compliance level is set to 1.6 with a JAR 6 selected
 3. Make modifications as needed after using `git pull`
 4. Right click on the project->Run As->Run on Server
-5. Open up a browser and type in `localhost:8080/OnlyFoods`
+5. Click on Choose an existing server and click Next
+6. Ensure that OnlyFoods is on the right hand side (otherwise click on it and click Add) and click finish
+7. Open up a browser and type in `localhost:8080/OnlyFoods`
