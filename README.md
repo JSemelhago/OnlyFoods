@@ -41,6 +41,7 @@ Project for MIE350 which incorporates software development methodologies to crea
 **Rerunning After Installation**
 
 1. Select the workspace
-2. Make modifications as needed after using `git pull`
-3. Right click on the project->Run As->Run on Server
-4. Open up a browser and type in `localhost:8080/OnlyFoods`
+2. Ensure that Tomcat is loaded and the JRE compliance level is set to 1.6 with a JAR 6 selected
+3. Make modifications as needed after using `git pull`
+4. Right click on the project->Run As->Run on Server
+5. Open up a browser and type in `localhost:8080/OnlyFoods`
