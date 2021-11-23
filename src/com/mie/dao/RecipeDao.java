@@ -94,8 +94,6 @@ public class RecipeDao {
 		}
 	}
 
-	
-
 
 	public List<Recipe> getRecipeByKeyword(String keyword) {
 		/**
