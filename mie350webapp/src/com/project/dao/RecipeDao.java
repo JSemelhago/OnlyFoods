@@ -12,7 +12,7 @@ import com.mie.util.DbUtil;
 
 public class RecipeDao {
 	/**
-	 * This class handles all of the Student-related methods
+	 * This class handles all of the Recipe-related methods
 	 * (add/update/delete/get).
 	 */
 
@@ -31,19 +31,18 @@ public class RecipeDao {
 		 */
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("insert into RecipeDatabase(PostID, RecipeTitle, ImageUrl, Serving, Difficulty, PrepTime, Ingredients, Instructions, DishType, CuisineType, Username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+					.prepareStatement("insert into RecipeDatabase(RecipeTitle, ImageUrl, Serving, Difficulty, PrepTime, Ingredients, Instructions, DishType, CuisineType, Username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
 			// Parameters start with 1
-			preparedStatement.setInt(1, recipe.getPostID());
-			preparedStatement.setString(2, recipe.getRecipeTitle());
-			preparedStatement.setString(3, recipe.getImageUrl());
-			preparedStatement.setInt(4, recipe.getServing());
-			preparedStatement.setString(5, recipe.getDifficulty());
-			preparedStatement.setDouble(6, recipe.getPrepTime());
-			preparedStatement.setString(7, recipe.getIngredients());
-			preparedStatement.setString(8, recipe.getInstructions());
-			preparedStatement.setString(9, recipe.getDishType());
-			preparedStatement.setString(10, recipe.getCuisineType());
-			preparedStatement.setString(11, recipe.getUsername());
+			preparedStatement.setString(1, recipe.getRecipeTitle());
+			preparedStatement.setString(2, recipe.getImageUrl());
+			preparedStatement.setInt(3, recipe.getServing());
+			preparedStatement.setString(4, recipe.getDifficulty());
+			preparedStatement.setDouble(5, recipe.getPrepTime());
+			preparedStatement.setString(6, recipe.getIngredients());
+			preparedStatement.setString(7, recipe.getInstructions());
+			preparedStatement.setString(7, recipe.getDishType());
+			preparedStatement.setString(9, recipe.getCuisineType());
+			preparedStatement.setString(10, recipe.getUsername());
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -73,15 +72,19 @@ public class RecipeDao {
 		 */
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("update students set firstname=?, lastname=?, dob=?, email=?"
-							+ " where studentid=?");
+					.prepareStatement("update students set RecipeTitle=?, ImageUrl=?, Serving=?, Difficulty=?, PrepTime=?, Ingredients=?, Instructions=?, DishType=?, CuisineType=?, Username=?"
+							+ " where PostID=?");
 			// Parameters start with 1
-			preparedStatement.setString(1, student.getFirstName());
-			preparedStatement.setString(2, student.getLastName());
-			preparedStatement.setDate(3, new java.sql.Date(student.getDob()
-					.getTime()));
-			preparedStatement.setString(4, student.getEmail());
-			preparedStatement.setInt(5, student.getStudentid());
+			preparedStatement.setString(1, recipe.getRecipeTitle());
+			preparedStatement.setString(2, recipe.getImageUrl());
+			preparedStatement.setInt(3, recipe.getServing());
+			preparedStatement.setString(4, recipe.getDifficulty());
+			preparedStatement.setInt(5, recipe.getPrepTime());
+			preparedStatement.setString(6, recipe.getIngredients());
+			preparedStatement.setString(7, recipe.getInstructions());
+			preparedStatement.setString(8, recipe.getDishType());
+			preparedStatement.setString(9, recipe.getCuisineType());
+			preparedStatement.setString(10, recipe.getUsername());
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
