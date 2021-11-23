@@ -72,7 +72,7 @@ public class RecipeDao {
 		 */
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("update students set RecipeTitle=?, ImageUrl=?, Serving=?, Difficulty=?, PrepTime=?, Ingredients=?, Instructions=?, DishType=?, CuisineType=?, Username=?"
+					.prepareStatement("update RecipeDatabase set RecipeTitle=?, ImageUrl=?, Serving=?, Difficulty=?, PrepTime=?, Ingredients=?, Instructions=?, DishType=?, CuisineType=?, Username=?"
 							+ " where PostID=?");
 			// Parameters start with 1
 			preparedStatement.setString(1, recipe.getRecipeTitle());
@@ -146,15 +146,15 @@ public class RecipeDao {
 		return student;
 	}
 
-	public List<Student> getStudentByKeyword(String keyword) {
+	public List<Recipe> getRecipeByKeyword(String keyword) {
 		/**
-		 * This method retrieves a list of students that matches the keyword
+		 * This method retrieves a list of recipes that matches the keyword
 		 * entered by the user.
 		 */
-		List<Student> students = new ArrayList<Student>();
+		List<Recipe> recipes = new ArrayList<Recipe>();
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("select * from students where firstname LIKE ? OR lastname LIKE ? OR email LIKE ? OR dob LIKE ?");
+					.prepareStatement("select * from RecipeDatabase where RecipeTitle LIKE ? OR Difficulty LIKE ? OR DishType LIKE ? OR CuisineType LIKE ?");
 
 			preparedStatement.setString(1, "%" + keyword + "%");
 			preparedStatement.setString(2, "%" + keyword + "%");
@@ -162,19 +162,25 @@ public class RecipeDao {
 			preparedStatement.setString(4, "%" + keyword + "%");
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				Student student = new Student();
-				student.setStudentid(rs.getInt("studentid"));
-				student.setFirstName(rs.getString("firstname"));
-				student.setLastName(rs.getString("lastname"));
-				student.setDob(rs.getDate("dob"));
-				student.setEmail(rs.getString("email"));
-				students.add(student);
+				Recipe recipe = new Recipe();
+				recipe.setPostID(rs.getInt("PostID"));
+				recipe.setRecipeTitle(rs.getString("RecipeTitle"));
+				recipe.setImageUrl(rs.getString("ImageUrl"));
+				recipe.setServing(rs.getInt("Serving"));
+				recipe.setDifficulty(rs.getString("Difficulty"));
+				recipe.setPrepTime(rs.getInt("PrepTime"));
+				recipe.setIngredients(rs.getString("Ingredients"));
+				recipe.setInstructions(rs.getString("Instructions"));
+				recipe.setDishType(rs.getString("DishType"));
+				recipe.setCuisineType(rs.getString"CuisineType"));
+				recipe.setUsername(rs.getString("Username"));
+				recipes.add(recipe);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return students;
+		return recipes;
 	}
 
 }
