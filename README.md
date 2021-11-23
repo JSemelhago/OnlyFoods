@@ -36,5 +36,11 @@ Project for MIE350 which incorporates software development methodologies to crea
    3. Set the JRE to jre1.6 and click Finish and tick it
    4. Click OK
 6. Right click on the project->Run As->Run on Server
-7. 
+7. Open up a browser and type in `localhost:8080/OnlyFoods`
 
+**Rerunning After Installation**
+
+1. Select the workspace
+2. Make modifications as needed after using `git pull`
+3. Right click on the project->Run As->Run on Server
+4. Open up a browser and type in `localhost:8080/OnlyFoods`

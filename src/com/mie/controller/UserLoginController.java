@@ -1,14 +1,15 @@
 package com.mie.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mie.model.*;
-import com.mie.dao.*;
+import com.mie.model.User;
+import com.mie.dao.UserDao;
 
 /**
  * Servlet implementation for LoginController.
@@ -16,7 +17,7 @@ import com.mie.dao.*;
  * This class handles the login servlet and assigns session attributes for users
  * who succesfully log into the system.
  */
-public class LoginController extends HttpServlet {
+public class UserLoginController extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, java.io.IOException {
@@ -24,31 +25,30 @@ public class LoginController extends HttpServlet {
 		/**
 		 * Retrieve the entered username and password from the login.jsp form.
 		 */
-		Member member = new Member();
-		member.setUsername(request.getParameter("un"));
-		member.setPassword(request.getParameter("pw"));
+		User user = new User();
+		user.setUsername(request.getParameter("un"));
+		user.setPassword(request.getParameter("pw"));
 
 		try {
 			/**
 			 * Try to see if the member can log in.
 			 */
-			member = MemberDao.login(member);
+			user = UserDao.login(user);
 
 			/**
 			 * If the isValid value is true, assign session attributes to the
 			 * current member.
 			 */
-			if (member.isValid()) {
+			if (user.isValid()) {
 
 				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSessionmember", member);
-				session.setAttribute("username", member.getUsername());
-				session.setAttribute("firstname", member.getFirstName());
-				session.setAttribute("lastname", member.getLastName());
+				session.setAttribute("currentSessionUser", user);
+				session.setAttribute("username", user.getUsername());
+				session.setAttribute("name", user.getName());
 				/**
 				 * Redirect to the members-only home page.
 				 */
-				response.sendRedirect("memberLogged.jsp");
+				response.sendRedirect("userLogged.jsp");
 
 				/**
 				 * Set a timeout variable of 900 seconds (15 minutes) for this
