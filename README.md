@@ -4,7 +4,7 @@ Project for MIE350 which incorporates software development methodologies to crea
 
 ## **Installation & Deployment**
 
-#### **Prerequisites**
+### **Prerequisites**
 
 1. Eclipse IDE for Java EE Developers
    - **Windows & macOS**: the x84_64 version of Eclipse for Java EE Developers [here](https://www.eclipse.org/downloads/packages/release/luna/r/eclipse-ide-java-ee-developers)
@@ -14,8 +14,9 @@ Project for MIE350 which incorporates software development methodologies to crea
    - **Windows**: Install the Java SE Runtime Environment version 6u38 for Windows x86 Offline [here](https://www.oracle.com/java/technologies/javase-java-archive-javase6-downloads.html)
    - **macOS**: Install the legacy Java SE Runtime Environment version 6 [here](https://updates.cdn-apple.com/2019/cert/041-88384-20191011-3d8da658-dca4-4a5b-b67c-26e686876403/JavaForOSX.dmg)
 4. Microsoft Access
+5. Update `src/db.properties` to be the PATH_TO_DIR of the database in `src/db/OnlyFoods.accdb`
 
-**Installation**
+### **Installation**
 
 1. Use `git clone` to clone this repository locally
 2. Open Eclipse IDE for Java EE Developers and set a workspace. Make note of this workspace for future use
@@ -41,7 +42,7 @@ Project for MIE350 which incorporates software development methodologies to crea
 9. Click on OnlyFoods and click Add to ensure it is on the right hand side and click Finish
 10. Open up a browser and type in `localhost:8080/OnlyFoods`
 
-**Rerunning After Installation**
+### **Rerunning After Installation**
 
 1. Select the workspace
 2. Ensure that Tomcat is loaded and the JRE compliance level is set to 1.6 with a JAR 6 selected
