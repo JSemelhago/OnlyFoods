@@ -26,10 +26,10 @@ public class RecipeController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static String INSERT = "/addStudent.jsp";
-	private static String EDIT = "/editStudent.jsp";
-	private static String LIST_STUDENT_PUBLIC = "/listStudentPublic.jsp";
-	private static String LIST_STUDENT_ADMIN = "/listStudentAdmin.jsp";
+	private static String INSERT = "/addRecipe.jsp";
+	private static String EDIT = "/editRecipe.jsp";
+	//private static String LIST_STUDENT_PUBLIC = "/listRecipePublic.jsp";
+	//private static String LIST_STUDENT_ADMIN = "/listRecipeAdmin.jsp";
 
 	private RecipeDao dao;
 
@@ -67,8 +67,8 @@ public class RecipeController extends HttpServlet {
 			forward = INSERT;
 		} else if (action.equalsIgnoreCase("edit")) {
 			forward = EDIT;
-			int studentId = Integer.parseInt(request.getParameter("studentId"));
-			Student student = dao.getStudentById(studentId);
+			int postId = Integer.parseInt(request.getParameter("studentId"));
+			Recipe recipe = dao.getRecipeById(recipeId);
 			request.setAttribute("student", student);
 		} else if (action.equalsIgnoreCase("listStudent")) {
 			forward = LIST_STUDENT_PUBLIC;
