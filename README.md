@@ -6,14 +6,14 @@ Project for MIE350 which incorporates software development methodologies to crea
 
 ### **Prerequisites**
 
-1. Eclipse IDE for Java EE Developers
+1. Eclipse IDE for Java EE Developers (*skip if running Eclipse from the MIE350 folder on ECF*)
    - **Windows & macOS**: the x84_64 version of Eclipse for Java EE Developers [here](https://www.eclipse.org/downloads/packages/release/luna/r/eclipse-ide-java-ee-developers)
-2. Apache Tomcat v7.0
+2. Apache Tomcat v7.0 (*skip if running Eclipse from the MIE350 folder on ECF*)
    - Unzip Apache Tomcat 7.0.96 [here](https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.96/bin/apache-tomcat-7.0.96.zip) and make note of its downloaded directory
-3. JRE 6 or JDK 1.6
+3. JRE 6 or JDK 1.6 (*skip if running Eclipse from the MIE350 folder on ECF*)
    - **Windows**: Install the Java SE Runtime Environment version 6u38 for Windows x86 Offline [here](https://www.oracle.com/java/technologies/javase-java-archive-javase6-downloads.html)
    - **macOS**: Install the legacy Java SE Runtime Environment version 6 [here](https://updates.cdn-apple.com/2019/cert/041-88384-20191011-3d8da658-dca4-4a5b-b67c-26e686876403/JavaForOSX.dmg)
-4. Microsoft Access
+4. Microsoft Access (*skip if running Eclipse from the MIE350 folder on ECF*)
 5. Update `src/db.properties` to be the PATH_TO_DIR of the database in `src/db/OnlyFoods.accdb`
 
 ### **Installation**
