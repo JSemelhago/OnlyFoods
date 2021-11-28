@@ -28,7 +28,7 @@ public class RecipeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String INSERT = "/addRecipe.jsp";
 	private static String EDIT = "/editRecipe.jsp";
-	//private static String LIST_STUDENT_PUBLIC = "/listRecipePublic.jsp";
+	private static String LIST_RECIPE_PUBLIC = "/listRecipePublic.jsp";
 	//private static String LIST_STUDENT_ADMIN = "/listRecipeAdmin.jsp";
 
 	private RecipeDao dao;
@@ -67,15 +67,15 @@ public class RecipeController extends HttpServlet {
 			forward = INSERT;
 		} else if (action.equalsIgnoreCase("edit")) {
 			forward = EDIT;
-			int postId = Integer.parseInt(request.getParameter("studentId"));
+			int postId = Integer.parseInt(request.getParameter("PostId"));
 			Recipe recipe = dao.getRecipeById(recipeId);
-			request.setAttribute("student", student);
-		} else if (action.equalsIgnoreCase("listStudent")) {
+			request.setAttribute("RecipeDatabase", recipe);
+		} else if (action.equalsIgnoreCase("listRecipe")) {
 			forward = LIST_STUDENT_PUBLIC;
-			request.setAttribute("students", dao.getAllStudents());
-		} else if (action.equalsIgnoreCase("listStudentAdmin")) {
-			forward = LIST_STUDENT_ADMIN;
-			request.setAttribute("students", dao.getAllStudents());
+			request.setAttribute("RecipeDatabase", dao.getAllRecipes());
+		//} else if (action.equalsIgnoreCase("listStudentAdmin")) {
+			//forward = LIST_STUDENT_ADMIN;
+			//request.setAttribute("RecipeDatabase", dao.getAllStudents());
 		} else {
 			forward = INSERT;
 		}

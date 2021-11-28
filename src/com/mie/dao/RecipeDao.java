@@ -156,5 +156,30 @@ public class RecipeDao {
 
 		return recipes;
 	}
+	
+	public List<Recipe> getAllRecipes(){
+		List<Recipe> recipes = new ArrayList<Recipe>();
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from RecipeDatabase");
+			while (rs.next) {
+				Recipe recipe = new Recipe();
+				recipe.setPostID(rs.getInt("PostID"));
+				recipe.setRecipeTitle(rs.getString("RecipeTitle"));
+				recipe.setImageUrl(rs.getString("ImageUrl"));
+				recipe.setServing(rs.getInt("Serving"));
+				recipe.setDifficulty(rs.getString("Difficulty"));
+				recipe.setPrepTime(rs.getInt("PrepTime"));
+				recipe.setIngredients(rs.getString("Ingredients"));
+				recipe.setInstructions(rs.getString("Instructions"));
+				recipe.setDishType(rs.getString("DishType"));
+				recipe.setCuisineType(rs.getString("CuisineType"));
+				recipe.setUsername(rs.getString("Username"));
+				recipes.add(recipe);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
