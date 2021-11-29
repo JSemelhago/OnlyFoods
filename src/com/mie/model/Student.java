@@ -96,14 +96,14 @@ public class Student extends User{
 		savedPost.remove(post);
 	}
 	
-	public void updateUserRecords() {
-		String qStr = "UPDATE UserRecords Set Email ='" + email + "', Name ='" + name + "', PhotoUrl = '"
-				+ photoUrl + "', Bio = '" + bio +  "', Location = '" + location +  "', SavedPost = '" + savedPost + "' WHERE Username =" + username + "; ";
+	public void updateStudent() {
+		String qStr = "UPDATE Student Set Email ='" + email + "', Name ='" + name + "', PhotoUrl = '"
+				+ photoUrl + "', Bio = '" + bio +  "', Location = '" + location +  "', Password = '" + password + "' WHERE Username =" + username + "; ";
 				OnlyFoodsRunner.runUpdate(qStr);
 	}
 	
-	public void updateUserCredentials() {
-		String qStr = "UPDATE UserCredentials Set Password ='" + password + "' WHERE Username =" + username + "; ";
+	public void updateUserRecords() {
+		String qStr = "UPDATE UserRecords Set Password ='" + password + "' WHERE Username =" + username + "; ";
 			OnlyFoodsRunner.runUpdate(qStr);
 	}
 }
