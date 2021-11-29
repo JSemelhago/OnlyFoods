@@ -23,7 +23,7 @@ public class UserDao {
 	static Connection currentCon = null;
 	static ResultSet rs = null;
 
-	public static User login(User user) {
+	public static User login(Student student) {
 
 		/**
 		 * This method attempts to find the member that is trying to log in by
@@ -31,8 +31,8 @@ public class UserDao {
 		 */
 		Statement stmt = null;
 
-		String username = user.getUsername();
-		String password = user.getPassword();
+		String username = student.getUsername();
+		String password = student.getPassword();
 
 		/**
 		 * Prepare a query that searches the members table in the database
@@ -55,7 +55,7 @@ public class UserDao {
 			 */
 			
 			if (!more) {
-				user.setValid(false);
+				student.setValid(false);
 			}
 
 			/**
@@ -71,12 +71,12 @@ public class UserDao {
 				String photoUrl = rs.getString("PhotoUrl");
 				
 
-				user.setName(name);
-				user.setEmail(email);
-				user.setBio(bio);
-				user.setLocation(location);
-				user.setPhotoUrl(photoUrl);
-				user.setValid(true);
+				student.setName(name);
+				student.setEmail(email);
+				student.setBio(bio);
+				student.setLocation(location);
+				student.setPhotoUrl(photoUrl);
+				student.setValid(true);
 			}
 		}
 
@@ -87,7 +87,7 @@ public class UserDao {
 		/**
 		 * Return the User object.
 		 */
-		return user;
+		return student;
 
 	}
 }

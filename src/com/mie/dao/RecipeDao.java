@@ -162,7 +162,7 @@ public class RecipeDao {
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery("select * from RecipeDatabase");
-			while (rs.next) {
+			while (rs.next()) {
 				Recipe recipe = new Recipe();
 				recipe.setPostID(rs.getInt("PostID"));
 				recipe.setRecipeTitle(rs.getString("RecipeTitle"));
@@ -180,6 +180,8 @@ public class RecipeDao {
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
+		return recipes;
 	}
+	
 
 }

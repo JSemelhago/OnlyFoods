@@ -1,5 +1,7 @@
 package com.mie.model;
 
+import java.util.ArrayList;
+
 public class Student extends User{
 	private String name;
 	private String email;
@@ -23,6 +25,10 @@ public class Student extends User{
 		this.bio = bio;
 		this.location = location;
 		this.photoUrl = photoUrl;
+	}
+	
+	public Student(){
+		
 	}
 	
 	

@@ -3,8 +3,8 @@ package com.mie.model;
 import java.util.ArrayList;
 
 public class User {
-	private String username;
-	private String password;
+	protected String username;
+	protected String password;
 	
 	//admin constructor
 	public User(String username, String password) {
@@ -26,6 +26,10 @@ public class User {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public User(){
+		
 	}
 	
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mie.dao.RecipeDao;
 import com.mie.model.Recipe;
+import com.mie.model.Student;
 
 public class RecipeController extends HttpServlet {
 	/**
@@ -60,18 +61,18 @@ public class RecipeController extends HttpServlet {
 
 		if (action.equalsIgnoreCase("delete")) {
 			int postId = Integer.parseInt(request.getParameter("PostId"));
-			dao.deleteRecipe(PostId);
-			forward = LIST_STUDENT_ADMIN;
-			request.setAttribute("RecipeDatabase", dao.getAllStudents());
+			dao.deleteRecipe(postId);
+			forward = LIST_RECIPE_PUBLIC;
+			request.setAttribute("RecipeDatabase", dao.getAllRecipes());
 		} else if (action.equalsIgnoreCase("insert")) {
 			forward = INSERT;
 		} else if (action.equalsIgnoreCase("edit")) {
 			forward = EDIT;
 			int postId = Integer.parseInt(request.getParameter("PostId"));
-			Recipe recipe = dao.getRecipeById(recipeId);
+			Recipe recipe = dao.getRecipeById(postId);
 			request.setAttribute("RecipeDatabase", recipe);
 		} else if (action.equalsIgnoreCase("listRecipe")) {
-			forward = LIST_STUDENT_PUBLIC;
+			forward = LIST_RECIPE_PUBLIC;
 			request.setAttribute("RecipeDatabase", dao.getAllRecipes());
 		//} else if (action.equalsIgnoreCase("listStudentAdmin")) {
 			//forward = LIST_STUDENT_ADMIN;
@@ -92,15 +93,15 @@ public class RecipeController extends HttpServlet {
 		 * the addStudent.jsp or the editStudent.jsp pages.
 		 */
 		Student student = new Student();
-		student.setFirstName(request.getParameter("firstName"));
-		student.setLastName(request.getParameter("lastName"));
-		try {
-			Date dob = new SimpleDateFormat("MM/dd/yyyy").parse(request
-					.getParameter("dob"));
-			student.setDob(dob);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		student.setName(request.getParameter("name"));
+		//Date of birth - removed for now
+//		try {
+//			Date dob = new SimpleDateFormat("MM/dd/yyyy").parse(request
+//					.getParameter("dob"));
+//			student.setDob(dob);
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
 		student.setEmail(request.getParameter("email"));
 		String studentid = request.getParameter("studentid");
 		/**
