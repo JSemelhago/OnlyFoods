@@ -85,47 +85,47 @@ public class RecipeController extends HttpServlet {
 		view.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
-		/**
-		 * This method retrieves all of the information entered in the form on
-		 * the addStudent.jsp or the editStudent.jsp pages.
-		 */
-		Student student = new Student();
-		student.setName(request.getParameter("name"));
-		//Date of birth - removed for now
-//		try {
-//			Date dob = new SimpleDateFormat("MM/dd/yyyy").parse(request
-//					.getParameter("dob"));
-//			student.setDob(dob);
-//		} catch (ParseException e) {
-//			e.printStackTrace();
+//	protected void doPost(HttpServletRequest request,
+//			HttpServletResponse response) throws ServletException, IOException {
+//
+//		/**
+//		 * This method retrieves all of the information entered in the form on
+//		 * the addStudent.jsp or the editStudent.jsp pages.
+//		 */
+//		Student student = new Student();
+//		student.setName(request.getParameter("name"));
+//		//Date of birth - removed for now
+////		try {
+////			Date dob = new SimpleDateFormat("MM/dd/yyyy").parse(request
+////					.getParameter("dob"));
+////			student.setDob(dob);
+////		} catch (ParseException e) {
+////			e.printStackTrace();
+////		}
+//		student.setEmail(request.getParameter("email"));
+//		String studentid = request.getParameter("studentid");
+//		/**
+//		 * If the 'studentid' field in the form is empty, the new student will
+//		 * be added to the list of Student objects.
+//		 */
+//		if (studentid == null || studentid.isEmpty()) {
+//			dao.addStudent(student);
+//		} else {
+//			/**
+//			 * Otherwise, if the field is already filled (this occurs when the
+//			 * user is trying to Edit A Student), then the student's information
+//			 * will be updated accordingly.
+//			 */
+//			student.setStudentid(Integer.parseInt(studentid));
+//			dao.updateStudent(student);
 //		}
-		student.setEmail(request.getParameter("email"));
-		String studentid = request.getParameter("studentid");
-		/**
-		 * If the 'studentid' field in the form is empty, the new student will
-		 * be added to the list of Student objects.
-		 */
-		if (studentid == null || studentid.isEmpty()) {
-			dao.addStudent(student);
-		} else {
-			/**
-			 * Otherwise, if the field is already filled (this occurs when the
-			 * user is trying to Edit A Student), then the student's information
-			 * will be updated accordingly.
-			 */
-			student.setStudentid(Integer.parseInt(studentid));
-			dao.updateStudent(student);
-		}
-		/**
-		 * Once the student has been added or updated, the page will redirect to
-		 * the listing of students.
-		 */
-		RequestDispatcher view = request
-				.getRequestDispatcher(LIST_STUDENT_ADMIN);
-		request.setAttribute("students", dao.getAllStudents());
-		view.forward(request, response);
-	}
+//		/**
+//		 * Once the student has been added or updated, the page will redirect to
+//		 * the listing of students.
+//		 */
+//		RequestDispatcher view = request
+//				.getRequestDispatcher(LIST_STUDENT_ADMIN);
+//		request.setAttribute("students", dao.getAllStudents());
+//		view.forward(request, response);
+//	}
 }

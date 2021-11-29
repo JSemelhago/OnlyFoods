@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mie.model.Student;
 import com.mie.model.User;
 import com.mie.dao.UserDao;
 
@@ -25,26 +26,26 @@ public class UserLoginController extends HttpServlet {
 		/**
 		 * Retrieve the entered username and password from the login.jsp form.
 		 */
-		User user = new User();
-		user.setUsername(request.getParameter("un"));
-		user.setPassword(request.getParameter("pw"));
+		Student student = new Student();
+		student.setUsername(request.getParameter("un"));
+		student.setPassword(request.getParameter("pw"));
 
 		try {
 			/**
 			 * Try to see if the member can log in.
 			 */
-			user = UserDao.login(user);
+			student = (Student) UserDao.login(student);
 
 			/**
 			 * If the isValid value is true, assign session attributes to the
 			 * current member.
 			 */
-			if (user.isValid()) {
+			if (student.isValid()) {
 
 				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSessionUser", user);
-				session.setAttribute("username", user.getUsername());
-				session.setAttribute("name", user.getName());
+				session.setAttribute("currentSessionUser", student);
+				session.setAttribute("username", student.getUsername());
+				session.setAttribute("name", student.getName());
 				/**
 				 * Redirect to the members-only home page.
 				 */

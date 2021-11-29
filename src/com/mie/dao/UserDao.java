@@ -33,7 +33,7 @@ public class UserDao {
 
 		String username = student.getUsername();
 		String password = student.getPassword();
-
+		
 		/**
 		 * Prepare a query that searches the members table in the database
 		 * with the given username and password.
