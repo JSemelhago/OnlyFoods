@@ -51,7 +51,7 @@
 						
 						  <div class="column">
 						    <div class="card">
-						      <img src="img/Selena.jpg" alt="Selena" width="200" height="200">
+						      <img src="img/Selena.jpeg" alt="Selena" width="200" height="200">
 						      <div class="container">
 						        <h2>Selena Lombardi</h2>
 						        <p class="title">Technical Program Manager</p>
