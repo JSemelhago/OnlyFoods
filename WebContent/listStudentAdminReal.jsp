@@ -6,7 +6,7 @@
 
 <html lang="en">
 <head>
-<title>MIE350 Sample Web App - All Students in DB</title>
+<title>Only Foods Recipe Database</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -35,42 +35,39 @@
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1>All Students In Database</h1>
+				<h1>All Recipes in the OnlyFoods Database</h1>
 
 				The time is now <b><%=new java.util.Date()%></b>.<br> <br>
 
-				The following student information is displayed:
-				<ul>
-					<li>Student ID</li>
-					<li>First Name</li>
-					<li>Last Name</li>
-					<li>Email</li>
-				</ul>
-				Due to privacy concerns, students' dates of birth (DOB) <u>are
-					not</u> shown.<br /> <br /> The following <B><c:out
-						value="${students.size()}" /> students</B> are in your database (you
-				can click on the table headings to sort the students): <br /> <br />
+				<a class="btn btn-primary" href="RecipeController?action=insert">Add
+					A New Recipe</a>
+				<br /> <br /> The following <B><c:out
+						value="${recipes.size()}" /> recipes</B> are in your database: <br /> <br />
 
 				<table border=1 class="sortable">
 					<thead>
 						<tr>
-							<th>Student Id</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<!-- th>DOB</th -->
-							<th>Email</th>
+							<th>Post ID</th>
+							<th>Recipe Title</th>
+							<th>Image</th>
+							<th>NumberOfLikes</th>
+							<th>Username</th>
+							<th>Edit</th>
+							<th>Delete</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${students}" var="student">
+						<c:forEach items="${recipes}" var="recipe">
 							<tr>
-								<td align="center"><c:out value="${student.getStudentid()}" /></td>
-								<td align="center"><c:out value="${student.getFirstName()}" /></td>
-								<td align="center"><c:out value="${student.getLastName()}" /></td>
-								<!--td align="center"><fmt:formatDate pattern="yyyy-MMM-dd"
-										value="${student.getDob()}" /></td-->
-								<td align="center"><c:out value="${student.getEmail()}" /></td>
-
+								<td align="center"><c:out value="${recipe.getPostId()}" /></td>
+								<td align="center"><c:out value="${recipe.getRecipeTitle()}" /></td>
+								<td align="center"><c:out value="${recipe.getImageUrl()}" /></td>
+								<td align="center"><c:out value="${recipe.getNumberOfLikes()}" /></td>
+								<td align="center"><c:out value="${recipe.getUsername()}" /></td>
+								<td align="center"><a class="btn btn-warning"
+									href="RecipeController?action=edit&PostId"><c:out value="${recipe.getPostId()}"/>Edit</a></td>
+								<td align="center"><a class="btn btn-danger"
+									href="RecipeController?action=delete&PostId"><c:out value="${recipe.getPostid()}"/>Delete</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
