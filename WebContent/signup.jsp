@@ -15,10 +15,10 @@
   </head>
   <body>
       <body style="background-color:#D1FDD1;">
-      <title>OnlyFoods - SignUp</title>
+      <title>OnlyFoods - Sign-up</title>
     <h2>Sign up!</h2>
   </body>
-  <form action="/action_page.php">
+  <form action="SignUpController">
   <label for="fname">Full Name:</label>
   <input type="text" id="fname" name="fname"><br><br>
   <label for="uname">Username:</label>
@@ -29,11 +29,11 @@
   <input type="password" id="pass" name="pass"><br><br>
   <label for="bio">Bio:</label>
   <input type="text" id="bio" name="bio"><br><br>
-</form>
+  <label for="location">Location:</label>
+  <input type="text" id="location" name="location"><br><br>
 <h3>Enter link of profile photo</h3>
 <label for="dp">Profile Photo link:</label>
 <input type="url" id="dp" name="dp"><br><br>
-<input type="Submit">
-</form>
+<input type="Submit" value = "Submit">
 
 </html>

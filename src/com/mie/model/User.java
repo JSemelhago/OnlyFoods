@@ -3,13 +3,16 @@ package com.mie.model;
 import java.util.ArrayList;
 
 public class User {
-	protected String username;
-	protected String password;
+	protected static String username;
+	protected static String password;
+	protected static int userType;
+	private boolean valid;
 	
 	//admin constructor
-	public User(String username, String password) {
+	public User(String username, String password, int userType) {
 		this.username = username;
 		this.password = password;
+		this.userType = userType;
 	}
 	
 	public String getUsername(){
@@ -20,6 +23,10 @@ public class User {
 		return password;
 	}
 	
+	public int getType(){
+		return userType;
+	}
+	
 	public void setUsername(String username){
 		this.username = username;
 	}
@@ -28,8 +35,17 @@ public class User {
 		this.password = password;
 	}
 	
+	public void setValid(boolean newValid) {
+		valid = newValid;
+	}
+	
+	public boolean isValid() {
+		return valid;
+	}
 	public User(){
+		this.userType = 0;
 		
 	}
 	
 }
+

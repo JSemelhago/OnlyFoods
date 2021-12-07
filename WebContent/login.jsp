@@ -16,7 +16,7 @@
       <title>OnlyFoods - Log In</title>
     <h2>Log In and Start Sharing!</h2>
   </body>
-  <form action="UserLoginController">
+  <form action="LoginController">
   <label for="uname">Username:</label>
   <input type="text" id="uname" name="uname"><br><br>
   <label for="pass">Password:</label>
@@ -24,6 +24,6 @@
   <input type="submit" value="Next">
   <p> Sample credentials for testing purposes: </p>
   <p> Username: michael </p>
-  <p> Password: gruninger  </p>
+  <p> Password: 123  </p>
 
 </html>

@@ -12,6 +12,7 @@ public class Recipe {
 	private String dishType;
 	private String cuisineType;
 	private String username;
+	private int numberOfLikes;
 	
 	public Recipe(){
 		
@@ -29,6 +30,7 @@ public class Recipe {
 		this.dishType = dishType;
 		this.cuisineType = cuisineType;
 		this.username = username;
+		this.numberOfLikes = 0;
 	}
 	
 	//Getters
@@ -65,6 +67,9 @@ public class Recipe {
 	public String getUsername() {
 		return this.username;
 	}
+	public int getNumberOfLikes() {
+		return this.numberOfLikes;
+	}
 	
 	//Setters
 	public void setPostID(int postID) {
@@ -76,14 +81,16 @@ public class Recipe {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	public void setServing(int serving) {
-		this.serving = serving;
+	public void setServing(String stringserving) {
+		int intserving = Integer.valueOf(stringserving);
+		this.serving = intserving;
 	}
 	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
 	}
-	public void setPrepTime(double prepTime) {
-		this.prepTime = prepTime;
+	public void setPrepTime(String stringprepTime) {
+		double doublepreptime = Double.valueOf(stringprepTime);
+		this.prepTime = doublepreptime;
 	}
 	public void setIngredients(String ingredients) {
 		this.ingredients = ingredients;
@@ -99,6 +106,10 @@ public class Recipe {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public void setNumberOfLikes(int updatedNumberOfLikes) {
+		this.numberOfLikes = numberOfLikes;
 	}
 	
 	public void updateRecipeDatabase() {

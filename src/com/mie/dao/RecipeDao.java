@@ -19,6 +19,8 @@ public class RecipeDao {
 	 */
 
 	private Connection connection;
+	static Connection currentCon = null;
+	static ResultSet rs = null;
 
 	public RecipeDao() {
 		/**
@@ -42,7 +44,7 @@ public class RecipeDao {
 			preparedStatement.setDouble(5, recipe.getPrepTime());
 			preparedStatement.setString(6, recipe.getIngredients());
 			preparedStatement.setString(7, recipe.getInstructions());
-			preparedStatement.setString(7, recipe.getDishType());
+			preparedStatement.setString(8, recipe.getDishType());
 			preparedStatement.setString(9, recipe.getCuisineType());
 			preparedStatement.setString(10, recipe.getUsername());
 			preparedStatement.executeUpdate();
@@ -105,9 +107,9 @@ public class RecipeDao {
 				recipe.setPostID(rs.getInt("PostID"));
 				recipe.setRecipeTitle(rs.getString("RecipeTitle"));
 				recipe.setImageUrl(rs.getString("ImageUrl"));
-				recipe.setServing(rs.getInt("Serving"));
+				recipe.setServing(String.valueOf(rs.getInt("Serving")));
 				recipe.setDifficulty(rs.getString("Difficulty"));
-				recipe.setPrepTime(rs.getInt("PrepTime"));
+				recipe.setPrepTime(String.valueOf(rs.getInt("PrepTime")));
 				recipe.setIngredients(rs.getString("Ingredients"));
 				recipe.setInstructions(rs.getString("Instructions"));
 				recipe.setDishType(rs.getString("DishType"));
@@ -140,9 +142,9 @@ public class RecipeDao {
 				recipe.setPostID(rs.getInt("PostID"));
 				recipe.setRecipeTitle(rs.getString("RecipeTitle"));
 				recipe.setImageUrl(rs.getString("ImageUrl"));
-				recipe.setServing(rs.getInt("Serving"));
+				recipe.setServing(String.valueOf(rs.getInt("Serving")));
 				recipe.setDifficulty(rs.getString("Difficulty"));
-				recipe.setPrepTime(rs.getInt("PrepTime"));
+				recipe.setPrepTime(String.valueOf(rs.getInt("PrepTime")));
 				recipe.setIngredients(rs.getString("Ingredients"));
 				recipe.setInstructions(rs.getString("Instructions"));
 				recipe.setDishType(rs.getString("DishType"));
@@ -167,9 +169,9 @@ public class RecipeDao {
 				recipe.setPostID(rs.getInt("PostID"));
 				recipe.setRecipeTitle(rs.getString("RecipeTitle"));
 				recipe.setImageUrl(rs.getString("ImageUrl"));
-				recipe.setServing(rs.getInt("Serving"));
+				recipe.setServing(String.valueOf(rs.getInt("Serving")));
 				recipe.setDifficulty(rs.getString("Difficulty"));
-				recipe.setPrepTime(rs.getInt("PrepTime"));
+				recipe.setPrepTime(String.valueOf(rs.getInt("PrepTime")));
 				recipe.setIngredients(rs.getString("Ingredients"));
 				recipe.setInstructions(rs.getString("Instructions"));
 				recipe.setDishType(rs.getString("DishType"));
@@ -183,5 +185,88 @@ public class RecipeDao {
 		return recipes;
 	}
 	
+	public boolean checkUserLike(String username, int postId){
+		Statement stmt = null;
+		
+		String searchQuery = "select * from PostEngagement where Username='" + username + "' AND PostID='" + postId + "'";
+		
+		try {
+			// connect to DB
+			currentCon = DbUtil.getConnection();
+			stmt = currentCon.createStatement();
+			rs = stmt.executeQuery(searchQuery);
+			boolean more = rs.next();
+			
+			if (more){
+				return true;
+			}
+			
+			else{ 
+				return false;
+			}
+			
+		} catch (Exception ex) {
+			System.out.println("Like failed: An Exception has occurred! "
+					+ ex);
+		}
+		
+		return false;
+	}
+	
+	public int addLike(String username, int postId) {
+		/**
+		 * This method adds a like to a recipe in the database.
+		 */
+		Recipe recipe = this.getRecipeById(postId);
+		int updatedNumberOfLikes = recipe.getNumberOfLikes();
+		try {
+			PreparedStatement preparedStatement1 = connection
+					.prepareStatement("insert into PostEngagement(PostID, Username) values (?, ?)");
 
+			preparedStatement1.setInt(1, postId);
+			preparedStatement1.setString(2, username);
+			preparedStatement1.executeUpdate();
+			
+			PreparedStatement preparedStatement2 = connection
+					.prepareStatement("update RecipeDatabase set NumberOfLikes=?"
+							+ " where PostID=?");
+	
+			updatedNumberOfLikes = recipe.getNumberOfLikes() + 1;
+			preparedStatement2.setInt(1, updatedNumberOfLikes);
+			preparedStatement2.setInt(2, postId);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return updatedNumberOfLikes;
+	}
+	
+	public int deleteLike(String username, int postId) {
+
+		Recipe recipe = this.getRecipeById(postId);
+		int updatedNumberOfLikes = recipe.getNumberOfLikes();		
+		try {
+			PreparedStatement preparedStatement1 = connection
+					.prepareStatement("delete from PostEngagement where PostID=? AND username=?");
+			preparedStatement1.setInt(1, postId);
+			preparedStatement1.setString(2, username);
+			preparedStatement1.executeUpdate();
+		
+			
+			PreparedStatement preparedStatement2 = connection
+					.prepareStatement("update RecipeDatabase set NumberOfLikes=?"
+							+ " where PostID=?");
+	
+			updatedNumberOfLikes = recipe.getNumberOfLikes() - 1;
+			preparedStatement2.setInt(1, updatedNumberOfLikes);
+			preparedStatement2.setInt(2, postId);
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return updatedNumberOfLikes;
+	}
 }

@@ -31,7 +31,6 @@
 
 	<%
 		Member member = (Member) session.getAttribute("currentSessionUser");
-
 		String username = (String) session.getAttribute("username");
 		String firstname = (String) session.getAttribute("firstname");
 	%>
@@ -67,4 +66,3 @@
 
 </body>
 </html>
-

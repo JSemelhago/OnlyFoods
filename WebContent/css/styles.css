@@ -1,0 +1,48 @@
+input[type=text], input[type=password], .textarea{
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: solid;
+  background: #ffffff;
+}
+
+h1{
+  text-align: center;
+}
+
+img{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.textarea[contenteditable]:empty::before{
+  content: "Enter Text Here";
+  color: gray;
+}
+
+input[type=submit]{
+  color: pink;
+  background: purple;
+}
+
+div{
+  margin: auto;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

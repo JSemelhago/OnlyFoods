@@ -1,5 +1,7 @@
 package com.mie.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Student extends User{
@@ -12,14 +14,14 @@ public class Student extends User{
 	private ArrayList<Recipe> savedPost;
 	
 	public Student(String username, String password, String name, String email) {
-		super(username, password);
+		super(username, password, 0);
 		this.name = name;
 		this.email = email;
 	}
 	
 	
 	public Student(String username, String password, String name, String email, String bio, String location, String photoUrl) {
-		super(username, password);
+		super(username, password, 0);
 		this.name = name;
 		this.email = email;
 		this.bio = bio;
@@ -30,7 +32,6 @@ public class Student extends User{
 	public Student(){
 		
 	}
-	
 	
 	
 	
@@ -102,8 +103,12 @@ public class Student extends User{
 				OnlyFoodsRunner.runUpdate(qStr);
 	}
 	
-	public void updateUserRecords() {
-		String qStr = "UPDATE UserRecords Set Password ='" + password + "' WHERE Username =" + username + "; ";
-			OnlyFoodsRunner.runUpdate(qStr);
-	}
+	
+//	public void updateUserRecords() {
+//		String qStr = "UPDATE UserRecords Set Password ='" + password + "' WHERE Username =" + username + "; ";
+//			OnlyFoodsRunner.runUpdate(qStr);
+//	}
+	
+
+	
 }

@@ -38,11 +38,9 @@
 	<%@ include file="navbar_loggedin.jsp"%>
 
 	<%
-		Member member = (Member) session.getAttribute("currentSessionUser");
-
+		Student member = (Student) session.getAttribute("currentSessionUser");
 		String username = (String) session.getAttribute("username");
-		String firstname = (String) session.getAttribute("firstname");
-		String lastname = (String) session.getAttribute("lastname");
+		String name = (String) session.getAttribute("name");
 	%>
 
 	<div class="container-fluid text-center">
@@ -52,8 +50,7 @@
 
 				<h1>
 					Welcome,
-					<%=firstname%>
-					<%=lastname%>!
+					<%=name%>!
 				</h1>
 
 

@@ -23,7 +23,8 @@
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
 </head>
-<body>
+<body style="background-color:WhiteSmoke;">
+<font color="Gray">
 
 	<%@ include file="navbar.jsp"%>
 
@@ -31,7 +32,7 @@
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-2 sidenav">
+			<div class="col-sm-2 sidenav" style="background-color:Gainsboro;">
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
 			<div class="col-sm-8 text-left">
@@ -103,7 +104,7 @@
 				</p>
 
 			</div>
-			<div class="col-sm-2 sidenav">
+			<div class="col-sm-2 sidenav" style="background-color:Gainsboro;">
 				<!-- You can put right sidebar links here if you want to. -->
 			</div>
 		</div>
@@ -111,6 +112,6 @@
 
 	<%@ include file="footer.jsp"%>
 
-
+</font>
 </body>
 </html>

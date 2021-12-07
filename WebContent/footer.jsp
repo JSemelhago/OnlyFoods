@@ -1,6 +1,6 @@
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-center" style="background-color:DarkBlue;">
 	<p>
-		This sample web app is for demonstration purposes only. <br>
+		This web app is based largely off the work of the following contributors. <br>
 		MIE350 Sample Web Application &#169;
 		<%=new java.text.SimpleDateFormat("yyyy")
 					.format(new java.util.Date())%>

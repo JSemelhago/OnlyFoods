@@ -72,5 +72,8 @@ public class OnlyFoodsRunner {
 			System.out.println(se);
 		}
 	}
+	
+	
+	
 
 }

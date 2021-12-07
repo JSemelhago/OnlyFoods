@@ -14,8 +14,8 @@
 				<li><a href="memberLogged.jsp">Home</a></li>
 				<!-- li><a href="about.jsp">About</a></li -->
 				<li><a
-					href="/mie350webapp/StudentController?action=listStudentAdmin">Student
-						List (Admin)</a></li>
+					href="addRecipe.jsp">Add Recipe</a></li>
+					
 			</ul>
 			<!-- The following code can be added to include a Login button to the right-hand side of the navbar-->
 			<ul class="nav navbar-nav navbar-right">

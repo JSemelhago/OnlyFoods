@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mie.dao.RecipeDao;
 import com.mie.model.Recipe;
@@ -58,21 +59,20 @@ public class RecipeController extends HttpServlet {
 		 */
 		String forward = "";
 		String action = request.getParameter("action");
-
+		
 		if (action.equalsIgnoreCase("delete")) {
 			int postId = Integer.parseInt(request.getParameter("PostId"));
 			dao.deleteRecipe(postId);
 			forward = LIST_RECIPE_PUBLIC;
 			request.setAttribute("RecipeDatabase", dao.getAllRecipes());
 		} else if (action.equalsIgnoreCase("insert")) {
-			forward = INSERT;
+			forward = INSERT;	
 		} else if (action.equalsIgnoreCase("edit")) {
 			forward = EDIT;
 			int postId = Integer.parseInt(request.getParameter("PostId"));
 			Recipe recipe = dao.getRecipeById(postId);
 			request.setAttribute("RecipeDatabase", recipe);
 		} else if (action.equalsIgnoreCase("listRecipe")) {
-			forward = LIST_RECIPE_PUBLIC;
 			request.setAttribute("RecipeDatabase", dao.getAllRecipes());
 		//} else if (action.equalsIgnoreCase("listStudentAdmin")) {
 			//forward = LIST_STUDENT_ADMIN;
@@ -85,47 +85,48 @@ public class RecipeController extends HttpServlet {
 		view.forward(request, response);
 	}
 
-//	protected void doPost(HttpServletRequest request,
-//			HttpServletResponse response) throws ServletException, IOException {
-//
-//		/**
-//		 * This method retrieves all of the information entered in the form on
-//		 * the addStudent.jsp or the editStudent.jsp pages.
-//		 */
-//		Student student = new Student();
-//		student.setName(request.getParameter("name"));
-//		//Date of birth - removed for now
-////		try {
-////			Date dob = new SimpleDateFormat("MM/dd/yyyy").parse(request
-////					.getParameter("dob"));
-////			student.setDob(dob);
-////		} catch (ParseException e) {
-////			e.printStackTrace();
-////		}
-//		student.setEmail(request.getParameter("email"));
-//		String studentid = request.getParameter("studentid");
-//		/**
-//		 * If the 'studentid' field in the form is empty, the new student will
-//		 * be added to the list of Student objects.
-//		 */
-//		if (studentid == null || studentid.isEmpty()) {
-//			dao.addStudent(student);
-//		} else {
-//			/**
-//			 * Otherwise, if the field is already filled (this occurs when the
-//			 * user is trying to Edit A Student), then the student's information
-//			 * will be updated accordingly.
-//			 */
-//			student.setStudentid(Integer.parseInt(studentid));
-//			dao.updateStudent(student);
-//		}
-//		/**
-//		 * Once the student has been added or updated, the page will redirect to
-//		 * the listing of students.
-//		 */
-//		RequestDispatcher view = request
-//				.getRequestDispatcher(LIST_STUDENT_ADMIN);
-//		request.setAttribute("students", dao.getAllStudents());
-//		view.forward(request, response);
-//	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 HttpSession session = request.getSession();
+		 
+		/**
+		 * This method retrieves all of the information entered in the form on
+		 * the addRecipe.jsp or the editRecipe.jsp pages.
+		 */
+		Recipe newRecipe = new Recipe();
+		newRecipe.setRecipeTitle(request.getParameter("recipetitle"));
+		newRecipe.setImageUrl(request.getParameter("imageurl"));
+		newRecipe.setServing(request.getParameter("serving"));
+		newRecipe.setDifficulty(request.getParameter("difficulty"));
+		newRecipe.setPrepTime(request.getParameter("preptime"));
+		newRecipe.setIngredients(request.getParameter("ingredients"));
+		newRecipe.setInstructions(request.getParameter("instructions"));
+		newRecipe.setDishType(request.getParameter("dishtype"));
+		newRecipe.setCuisineType(request.getParameter("cuisinetype"));	
+		newRecipe.setUsername((String) session.getAttribute("username"));
+		
+		String postid = request.getParameter("postid");
+		/**
+		 * If the 'postid' field in the form is empty, the new recipe will
+		 * be added to the list of Recipe objects.
+		 */
+		if (postid == null || postid.isEmpty()) {
+			dao.addRecipe(newRecipe);
+		} else {
+			/**
+			 * Otherwise, if the field is already filled (this occurs when the
+			 * user is trying to Edit A Student), then the student's information
+			 * will be updated accordingly.
+			 */
+			newRecipe.setPostID(Integer.parseInt(postid));
+			dao.updateRecipe(newRecipe);
+		}
+		
+		/**
+		 * Once the recipe has been added or updated, the page will redirect to
+		 * the listing of students.
+		*/ 
+		RequestDispatcher view = request.getRequestDispatcher(LIST_RECIPE_PUBLIC);
+		request.setAttribute("recipes", dao.getAllRecipes());
+		view.forward(request, response);
+		}
 }
